@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSQuiz — Retro JS Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="title">JSQuiz<span class="cursor">▁</span></h1>
+    <div class="audio-controls">
+      <button type="button" id="btn-sfx" class="audio-button" aria-pressed="true">SFX: ON</button>
+      <button type="button" id="btn-music" class="audio-button" aria-pressed="false">♪: OFF</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="screen-start" class="screen">
+      <p class="subtitle">20 PREGUNTAS · DIFICULTAD CRECIENTE · 20S POR PREGUNTA</p>
+      <button type="button" id="btn-start" class="main-button">► EMPEZAR JUEGO</button>
+    </section>
+
+    <section id="screen-game" class="screen" hidden>
+      <div class="hud">
+        <span id="hud-question">PREGUNTA 1/20</span>
+        <span id="hud-score">PUNTOS: 0</span>
+      </div>
+      <div class="timer" role="timer" aria-label="Tiempo restante">
+        <div id="timer-bar" class="timer-bar"></div>
+      </div>
+      <h2 id="question-text" class="question"></h2>
+      <div id="options" class="options"></div>
+      <p id="explanation" class="explanation" hidden></p>
+    </section>
+
+    <section id="screen-end" class="screen" hidden>
+      <h1 class="final-title">GAME OVER</h1>
+      <p id="final-score" class="final-score"></p>
+      <p id="final-message" class="final-message"></p>
+      <button type="button" id="btn-restart" class="main-button">↺ JUGAR OTRA VEZ</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>JSQUIZ · HTML + CSS + JS VANILLA</p>
+  </footer>
+
+  <script src="game.js"></script>
+  <script src="audio.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

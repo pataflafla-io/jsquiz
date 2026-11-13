@@ -1,0 +1,268 @@
+/* styles.css — retro 8-bit look with the GTA VI / Miami Vice pastel palette. */
+
+:root {
+  --fuchsia: #ff71ce;
+  --fuchsia-soft: #ff9be5;
+  --turquoise: #01cdfe;
+  --mint: #05ffa1;
+  --violet: #b967ff;
+  --lime: #fffb96;
+  --ink: #2b1b47;
+  --ink-dark: #170e2b;
+  --cream: #fff7ec;
+  --red: #ff2e63;
+  --hard-shadow: #170e2b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* The hidden attribute must always win over any display rule below. */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  min-height: 100vh;
+  color: var(--cream);
+  line-height: 1.6;
+  background:
+    radial-gradient(circle at 50% 115%, rgba(255, 113, 206, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 85% -10%, rgba(1, 205, 254, 0.18) 0%, transparent 50%),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-dark) 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.site-header {
+  width: 100%;
+  max-width: 900px;
+  padding: 24px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  font-family: inherit;
+  font-size: clamp(7px, 1.6vw, 14px);
+  line-height: 1.25;
+  color: var(--fuchsia);
+  text-shadow: 0 0 6px rgba(255, 113, 206, 0.8), 4px 4px 0 var(--turquoise);
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.cursor {
+  color: var(--mint);
+  animation: blink 0.9s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.audio-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.audio-button {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 8px 12px;
+  color: var(--cream);
+  background: transparent;
+  border: 3px solid var(--turquoise);
+  box-shadow: 3px 3px 0 var(--hard-shadow);
+  cursor: pointer;
+}
+
+/* The pressed state doubles as the "on" indicator for the audio switches. */
+.audio-button[aria-pressed='true'] {
+  background: var(--turquoise);
+  color: var(--ink-dark);
+}
+
+.audio-button:active {
+  transform: translate(3px, 3px);
+  box-shadow: none;
+}
+
+main {
+  width: 100%;
+  max-width: 900px;
+  padding: 16px;
+  flex: 1;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 8px;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(18px, 4vw, 32px);
+  color: var(--lime);
+  text-shadow: 4px 4px 0 var(--red), 0 0 14px rgba(255, 251, 150, 0.5);
+}
+
+.subtitle {
+  font-size: 10px;
+  color: var(--turquoise);
+}
+
+.main-button {
+  font-family: inherit;
+  font-size: clamp(12px, 2vw, 16px);
+  padding: 18px 28px;
+  color: var(--ink-dark);
+  background: var(--mint);
+  border: 4px solid var(--ink-dark);
+  box-shadow: 6px 6px 0 var(--fuchsia);
+  cursor: pointer;
+}
+
+.main-button:hover {
+  background: var(--lime);
+}
+
+/* Hard "pressed" effect that fits the pixel aesthetic. */
+.main-button:active {
+  transform: translate(6px, 6px);
+  box-shadow: none;
+}
+
+.hud {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--violet);
+}
+
+.timer {
+  width: 100%;
+  height: 18px;
+  border: 3px solid var(--cream);
+  box-shadow: 3px 3px 0 var(--hard-shadow);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.timer-bar {
+  height: 100%;
+  width: 100%;
+  transition: width 1s linear, background 0.4s;
+}
+
+.question {
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 1.8;
+}
+
+.options {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.option {
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: left;
+  padding: 14px 16px;
+  color: var(--cream);
+  background: rgba(185, 103, 255, 0.12);
+  border: 3px solid var(--violet);
+  box-shadow: 4px 4px 0 var(--hard-shadow);
+  cursor: pointer;
+}
+
+.option:hover:not(:disabled) {
+  background: rgba(185, 103, 255, 0.3);
+  border-color: var(--turquoise);
+}
+
+.option:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+/* Feedback states stay vivid after disabling the buttons. */
+.option.correct {
+  background: rgba(5, 255, 161, 0.25);
+  border-color: var(--mint);
+  color: var(--mint);
+  opacity: 1;
+}
+
+.option.incorrect {
+  background: rgba(255, 46, 99, 0.25);
+  border-color: var(--red);
+  color: var(--red);
+  opacity: 1;
+}
+
+.explanation {
+  width: 100%;
+  font-size: 10px;
+  line-height: 1.8;
+  padding: 14px;
+  border: 3px dashed var(--lime);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.explanation.correct {
+  border-color: var(--mint);
+  color: var(--mint);
+}
+
+.explanation.incorrect {
+  border-color: var(--red);
+  color: var(--fuchsia-soft);
+}
+
+.final-title {
+  font-size: clamp(18px, 4vw, 32px);
+  color: var(--turquoise);
+  text-shadow: 4px 4px 0 var(--fuchsia);
+}
+
+.final-score {
+  font-size: clamp(14px, 3vw, 24px);
+  color: var(--lime);
+}
+
+.final-message {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--fuchsia-soft);
+}
+
+.site-footer {
+  padding: 16px;
+  font-size: 8px;
+  color: rgba(255, 247, 236, 0.45);
+  text-align: center;
+}
