@@ -47,10 +47,7 @@ jsquiz/
 
 ## Cómo probar el proyecto
 
-1. Abre una terminal en la carpeta del proyecto:
-   ```bash
-   cd <PATH_WHERE_YOU_>/jsquiz
-   ```
+1. Abre una terminal en la carpeta del proyecto
 
 2. Sirve los archivos (opcional, recomendado):
    ```bash
