@@ -1,3 +1,5 @@
+<img width="894" height="311" alt="Screenshot 2026-11-16 at 12 22 47 PM" src="https://github.com/user-attachments/assets/be1aea08-8f6d-4c68-905c-0f187acfb7d8" />
+
 # JSQuiz
 
 
