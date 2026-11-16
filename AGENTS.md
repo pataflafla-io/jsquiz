@@ -59,7 +59,7 @@ jsquiz/
 
 3. Abre el navegador en:
    ```
-   http://localhost:8000
+   http://localhost:3000
    ```
 
    O simplemente haz doble clic en `index.html` para abrirlo directamente.
